@@ -15,12 +15,11 @@ G.add_weighted_edges_from([
 ])
 
 print("Matriz de Adyancencia (Distancia en km)")
-print(nx.to_pandas_adjacency(G, dtype=float, weight='weight'))
+nx.to_pandas_adjacency(G, dtype=float, weight='weight')
 
 print("\nEvalucación de Rutas")
 print("¿Existe camino Euleriano (recorrer todas las calles sin repetir)?:", nx.has_eulerian_path(G))
 
-# Algoritmo para encontrar el camino Hamiltoniano
 def hamilton_residuos(G):
     def buscar(camino):
         if len(camino) == len(G):
@@ -42,7 +41,6 @@ def hamilton_residuos(G):
 
 hamilton_residuos(G)
 
-# Visualización del grafo con nombres completos
 plt.figure(figsize=(10, 6))
 pos = nx.spring_layout(G, seed=42)
 
@@ -56,7 +54,6 @@ nx.draw(
     font_weight='bold'
 )
 
-# Dibujar los pesos (distancias) en las aristas
 labels = nx.get_edge_attributes(G, 'weight')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=labels, font_size=10)
 
