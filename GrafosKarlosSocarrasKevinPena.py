@@ -1,9 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-
+import pandas as pd
 
 G = nx.DiGraph()
-
 
 G.add_weighted_edges_from([
     ('Hospital Central', 'Clinica Norte', 2),
@@ -15,7 +14,7 @@ G.add_weighted_edges_from([
 ])
 
 print("Matriz de Adyancencia (Distancia en km)")
-nx.to_pandas_adjacency(G, dtype=float, weight='weight')
+print(nx.to_pandas_adjacency(G, dtype=float, weight='weight'))
 
 print("\nEvalucación de Rutas")
 print("¿Existe camino Euleriano (recorrer todas las calles sin repetir)?:", nx.has_eulerian_path(G))
